@@ -8,6 +8,14 @@ def execute(cmd):
     return o.stdout.read().strip(), o.stdout.read().strip()
 
 def check_status_of_iphone_usb():
+    """Check status of iphone USB.
+
+    If 'status: active' is in an output of ifconfig en4
+
+    Returns:
+
+       bool: True if connected, otherwise return False.
+    """
     output, error = execute('ifconfig en4')
     if 'status: active' in output and not error:
         return True
